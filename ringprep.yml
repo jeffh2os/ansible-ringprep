@@ -1,0 +1,20 @@
+---
+
+- hosts: ring
+  become: true
+  
+  tasks: 
+
+  
+  - name: ping test
+    ansible.builtin.ping:  
+
+
+  - name: disable firewall
+    ansible.builtin.systemd:
+      name: firewalld.service
+      state: stopped
+
+  - name: Disable SELinux
+    ansible.posix.selinux:
+      state: disabled
