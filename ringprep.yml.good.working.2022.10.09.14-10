@@ -1,0 +1,66 @@
+---
+
+- hosts: ring
+  any_errors_fatal: yes
+  become: yes
+  
+  tasks: 
+
+  
+    - name: test connection
+      ansible.builtin.ping:
+
+
+    - name: Stop firewalld
+      ansible.builtin.systemd:
+          name: firewalld.service
+          state: stopped
+
+
+    - name: Disable service firewalld
+      ansible.builtin.systemd:
+        name: firewalld
+        enabled: no
+
+    
+    - name: Disable SELinux
+      ansible.posix.selinux:
+          state: disabled
+
+
+    - name: Add DNS to /etc/resolv.conf, without passing regexp
+      ansible.builtin.lineinfile:
+        path: /etc/resolv.conf
+        line: nameserver 192.168.1.107
+        create: yes
+
+
+    - name: create /etc/scality directory if it does not exist
+      file:
+        path: /etc/scality
+        state: directory
+        owner: root
+        group: root
+        mode: 0775
+
+
+    - name: Creates empty scality backup file
+      ansible.builtin.file:  
+        path: /etc/scality/backup.conf
+        state: touch
+
+
+
+#scal-data* servers only
+- hosts: ringdata 
+  any_errors_fatal: yes
+  become: yes
+
+  tasks:
+
+
+    - name: Add SSD rotation fix for vmware
+      ansible.builtin.lineinfile:
+        path: /etc/udev/rules.d/60-ssd-scheduler.rules
+        line: ACTION=="add|change", KERNEL=="sd[j]", ATTR{queue/rotational}="0", ATTR{queue/scheduler}="deadline"
+        create: yes

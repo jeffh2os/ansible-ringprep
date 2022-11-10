@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Checking backup folder sizes"
+#HP Z820 192.168.1.195
+ssh root@192.168.1.195 "du -s /vmfs/volumes/61ff4154-c165c40c-f440-2c41384f12cd/scality-sup/backup*"
+ssh root@192.168.1.195 "du -s /vmfs/volumes/62087204-103d4de5-3bf9-2c41384f12cd/scality-data1a_1/backup*"
+ssh root@192.168.1.195 "du -s /vmfs/volumes/62087204-103d4de5-3bf9-2c41384f12cd/scality-data1b/backup*"
+ssh root@192.168.1.195 "du -s /vmfs/volumes/62087204-103d4de5-3bf9-2c41384f12cd/scality-data1c/backup*"
+
+#HP DL380 192.168.1.197
+ssh root@192.168.1.197 "du -s /vmfs/volumes/6302c611-e807b950-ab3e-18a905656edc/scality-data2a/backup*"
+ssh root@192.168.1.197 "du -s /vmfs/volumes/6302c611-e807b950-ab3e-18a905656edc/scality-data2b/backup*"
+ssh root@192.168.1.197 "du -s /vmfs/volumes/6302c611-e807b950-ab3e-18a905656edc/scality-data2c/backup*"
+ssh root@192.168.1.197 "du -s /vmfs/volumes/6302c611-e807b950-ab3e-18a905656edc/scal_data3a/backup*"
+ssh root@192.168.1.197 "du -s /vmfs/volumes/6302c611-e807b950-ab3e-18a905656edc/scality-data3b/backup*"
+ssh root@192.168.1.197 "du -s /vmfs/volumes/6302c611-e807b950-ab3e-18a905656edc/scality-data3c/backup*"

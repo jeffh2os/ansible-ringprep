@@ -1,0 +1,35 @@
+---
+
+- hosts: ring
+  any_errors_fatal: yes
+  become: yes
+  
+  tasks: 
+
+  
+    - name: test connection
+      ansible.builtin.ping:
+
+
+    - name: Stop firewalld
+      ansible.builtin.systemd:
+          name: firewalld.service
+          state: stopped
+
+
+    - name: Disable service firewalld
+      ansible.builtin.systemd:
+        name: firewalld
+        enabled: no
+
+    
+    - name: Disable SELinux
+      ansible.posix.selinux:
+          state: disabled
+
+
+    - name: Add DNS to /etc/resolv.conf, without passing regexp
+      ansible.builtin.lineinfile:
+        path: /etc/resolv.conf
+        line: nameserver 192.168.1.107
+        create: yes

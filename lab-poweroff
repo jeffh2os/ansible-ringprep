@@ -1,0 +1,5 @@
+#!/bin/bash
+#lab power down for maint or other work
+
+
+for i in {0..9};do ssh root@192.168.1.5${i} "/sbin/poweroff" ;done

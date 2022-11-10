@@ -1,0 +1,16 @@
+ring,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+sizing_version,customer_name,#ring,data_ring_name,meta_ring_name,HALO API key,S3 endpoint,cos,arc-data,arc-coding,,,,,,,,,,,,,,,,,,,
+12.8,Jeff,1,DATA,,,192.168.1.70,2,7,5,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+servers,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+data_ip,data_iface,mgmt_ip,mgmt_iface,s3_ip,s3_iface,svsd_ip,svsd_iface,ring_membership,role,minion_id,enclosure,site,#cpu,cpu,ram,#nic,nic_size,#os_disk,os_disk_size,#data_disk,data_disk_size,#raid_card,raid_cache,raid_card_type,#ssd,ssd_size,#ssd_for_s3,ssd_for_s3_size
+,,192.168.1.50,ens192,,,,,DATA,supervisor,scal-sup,VIRTUAL MACHINE,DC1,4,Intel Core Processor,8,1,1,0,0,0,0,0,,,0,0,0,0
+192.168.1.61,ens224,192.168.1.51,ens192,192.168.1.41,ens256,,,DATA,"s3_md,storage,elastic,native rest,s3,zookeeper",scal-data1a,VIRTUAL MACHINE,DC1,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.62,ens224,192.168.1.52,ens192,192.168.1.42,ens256,,,DATA,"s3_md,storage,elastic,native rest,s3,zookeeper",scal-data1b,VIRTUAL MACHINE,DC1,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.63,ens224,192.168.1.53,ens192,192.168.1.43,ens256,,,DATA,"storage,elastic,native rest,s3,zookeeper",scal-data1c,VIRTUAL MACHINE,DC1,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.64,ens224,192.168.1.54,ens192,192.168.1.44,ens256,,,DATA,"s3_md,storage,elastic,native rest,s3,zookeeper",scal-data2a,VIRTUAL MACHINE,DC2,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.65,ens224,192.168.1.55,ens192,192.168.1.45,ens256,,,DATA,"s3_md,storage,elastic,native rest,s3,zookeeper",scal-data2b,VIRTUAL MACHINE,DC2,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.66,ens224,192.168.1.56,ens192,192.168.1.46,ens256,,,DATA,"storage,elastic,native rest,s3,zookeeper",scal-data2c,VIRTUAL MACHINE,DC2,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.67,ens224,192.168.1.57,ens192,192.168.1.47,ens256,,,DATA,"s3_md,storage,elastic,native rest,s3,zookeeper",scal-data3a,VIRTUAL MACHINE,DC3,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.68,ens224,192.168.1.58,ens192,192.168.1.48,ens256,,,DATA,"s3_md_wsb,storage,elastic,native rest,s3,zookeeper",scal-data3b,VIRTUAL MACHINE,DC3,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
+192.168.1.69,ens224,192.168.1.59,ens192,192.168.1.49,ens256,,,DATA,"storage,elastic,native rest,s3,zookeeper",scal-data3c,VIRTUAL MACHINE,DC3,4,Intel Core Processor,8,3,1,1,40,8,10,1,,raidController,1,20,0,0
