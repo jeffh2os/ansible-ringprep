@@ -71,11 +71,18 @@
 
   tasks:
 
-    #add fix for vmware virtual drives to ensure they show up as ssd or hdd
+    #add fix for vmware virtual drives to ensure they show up as ssd
     - name: Add SSD rotation fix for vmware
       ansible.builtin.lineinfile:
         path: /etc/udev/rules.d/60-ssd-scheduler.rules
-        line: ACTION=="add|change", KERNEL=="sd[j-k]", ATTR{queue/rotational}="0", ATTR{queue/scheduler}="deadline"
+        line: ACTION=="add|change", KERNEL=="sd[b-c]", ATTR{queue/rotational}="0", ATTR{queue/scheduler}="deadline"
+        create: yes
+    
+    #add fix for vmware virtual drives to ensure they show up as ssd
+    - name: Add HDD rotation fix for vmware
+      ansible.builtin.lineinfile:
+        path: /etc/udev/rules.d/60-ssd-scheduler.rules
+        line: ACTION=="add|change", KERNEL=="sd[d-i]", ATTR{queue/rotational}="1", ATTR{queue/scheduler}="deadline"
         create: yes
 
 #scal-conn* servers only
