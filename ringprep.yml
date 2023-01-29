@@ -57,10 +57,15 @@
         name: vim
         state: latest
 
-
+   #Make sure desired software is installed 
     - name: Install the latest version of tmux
       ansible.builtin.yum:
         name: tmux
+        state: latest
+
+    - name: Install the latest version of iperf3
+      ansible.builtin.yum:
+        name: iperf3
         state: latest
 
 
@@ -78,7 +83,7 @@
         line: ACTION=="add|change", KERNEL=="sd[b-c]", ATTR{queue/rotational}="0", ATTR{queue/scheduler}="deadline"
         create: yes
     
-    #add fix for vmware virtual drives to ensure they show up as ssd
+    #add fix for vmware virtual drives to ensure they show up as hdd
     - name: Add HDD rotation fix for vmware
       ansible.builtin.lineinfile:
         path: /etc/udev/rules.d/60-ssd-scheduler.rules
@@ -89,16 +94,16 @@
 #- hosts: ringconn
 #  any_errors_fatal: yes
 #  become: yes
-#
-#  tasks:
-#
-#    #add fix for vmware virtual drives to ensure they show up as ssd
-#    - name: Add SSD rotation fix for vmware
-#      ansible.builtin.lineinfile:
-#        path: /etc/udev/rules.d/60-ssd-scheduler.rules
-#        line: ACTION=="add|change", KERNEL=="sdb", ATTR{queue/rotational}="0", ATTR{queue/scheduler}="deadline"
-#        create: yes
-#
+
+            #  tasks:
+
+    #add fix for vmware virtual drives to ensure they show up as ssd
+    #    - name: Add SSD rotation fix for vmware
+    #      ansible.builtin.lineinfile:
+    #        path: /etc/udev/rules.d/60-ssd-scheduler.rules
+    #        line: ACTION=="add|change", KERNEL=="sd[b-c]", ATTR{queue/rotational}="0", ATTR{queue/scheduler}="deadline"
+    #        create: yes
+
 #    - name: Add HDD rotation fix for vmware
 #      ansible.builtin.lineinfile:
 #        path: /etc/udev/rules.d/60-ssd-scheduler.rules
